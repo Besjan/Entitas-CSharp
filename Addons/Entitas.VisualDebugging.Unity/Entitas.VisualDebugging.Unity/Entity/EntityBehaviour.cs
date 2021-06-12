@@ -42,7 +42,7 @@ namespace Entitas.VisualDebugging.Unity
         {
             if (_entity != null && _cachedName != _entity.ToString())
             {
-                var componentNames = string.Join(" - ", entity.GetComponents().Select(component => component.GetType().Name).ToArray());
+                var componentNames = string.Join(" - ", entity.GetComponents().Select(component => component.ToString()).ToArray());
                 name = _cachedName = componentNames;
             }
         }
