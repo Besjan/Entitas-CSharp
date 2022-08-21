@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Entitas.VisualDebugging.Unity
@@ -42,7 +41,14 @@ namespace Entitas.VisualDebugging.Unity
         {
             if (_entity != null && _cachedName != _entity.ToString())
             {
-                var componentNames = string.Join(" - ", entity.GetComponents().Select(component => component.ToString()).ToArray());
+                var componentNames = string.Empty;
+
+                var components = entity.GetComponents();
+                for (int i = 0; i < components.Length; i++)
+                {
+                    if (i != 0) componentNames += " - ";
+                    componentNames += components[i].ToString();
+                }
                 name = _cachedName = componentNames;
             }
         }
